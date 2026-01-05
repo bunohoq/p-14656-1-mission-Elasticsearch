@@ -5,6 +5,8 @@ import com.back.domain.post.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PostSerivice {
@@ -16,5 +18,8 @@ public class PostSerivice {
     public Post create(String title, String content, String author) {
         Post post = new Post(title, content, author);
         return postRepository.save(post);
+    }
+    public List<Post> findAll() {
+        return postRepository.findAll();
     }
 }
