@@ -19,8 +19,10 @@ public class BaseInitData {
         return args -> {
             work1();
             work2();
+            work3();
         };
     }
+
 
     private void work1() {
         log.debug("Post entity 개수: {}", postSerivice.count());
@@ -41,6 +43,14 @@ public class BaseInitData {
         log.debug("기존 Post 전체 조회");
         for (Post post : postSerivice.findAll()) {
             log.debug("Existing Post: {}", post);
+        }
+    }
+
+    private void work3() {
+        log.debug("Post 단건 조회");
+        for (Post post : postSerivice.findAll()) {
+            Post postRow = postSerivice.findById(post.getId()).get();
+            log.debug("조회된 Post: {}", postRow);
         }
     }
 }
